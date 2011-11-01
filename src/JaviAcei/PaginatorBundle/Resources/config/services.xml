@@ -11,6 +11,7 @@
   <services>
       <service id="javiacei.paginator" class="%paginator.class%">
           <argument type="service" id="request" strict="false" />
+          <argument>%paginator.limit%</argument>
       </service>
   </services>
 

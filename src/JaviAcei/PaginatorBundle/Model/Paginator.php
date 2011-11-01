@@ -15,8 +15,6 @@ use
  */
 class Paginator 
 {
-    const ITEMS_PER_PAGE = 2;
-    
     public $currentPage;
     
     public $itemsPerPage;
@@ -28,7 +26,7 @@ class Paginator
     /**
      * @param Symfony\Component\HttpFoundation\Request $request
      */
-    public function __construct(Request $request) 
+    public function __construct(Request $request, $nItems)
     {      
         // Página actual
         $page = (int) $request->get('page');
@@ -36,7 +34,7 @@ class Paginator
 
         // Elementos por página
         $itemsPerPage = (int) $request->get('limit');
-        $this->itemsPerPage = ($itemsPerPage > 0) ? $itemsPerPage : self::ITEMS_PER_PAGE;
+        $this->itemsPerPage = ($itemsPerPage > 0) ? $itemsPerPage : $nItems;
         
         // Número total de elementos
         $this->totalItems = 0;
@@ -99,5 +97,4 @@ class Paginator
     {
         return 1;
     }
-
 }
