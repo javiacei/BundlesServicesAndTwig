@@ -11,7 +11,8 @@
   <services>
       <service id="twig.extension.ideup.simple_paginator" class="%twig.extension.simple_paginator.class%">
 	      <tag name="twig.extension" alias="simple_paginator_extension" />
-          <argument type="service" id="templating.helper.ideup.simple_paginator" />
+          <argument type="service" id="javiacei.paginator" />
+ 		  <argument type="service" id="service_container" />
       </service>
   </services>
 
