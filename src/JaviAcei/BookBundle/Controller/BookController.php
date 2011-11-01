@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use JaviAcei\BookBundle\Paginator;
+use JaviAcei\PaginatorBundle\Model\Paginator;
 
 class BookController extends Controller
 {

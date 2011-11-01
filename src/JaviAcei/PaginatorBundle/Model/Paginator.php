@@ -1,6 +1,6 @@
 <?php
 
-namespace JaviAcei\BookBundle;
+namespace JaviAcei\PaginatorBundle\Model;
 
 use 
     Symfony\Component\HttpFoundation\Request
@@ -35,7 +35,7 @@ class Paginator
         $this->currentPage = ($page > 0) ? $page : $this->getFirstPage();
 
         // Elementos por página
-        $itemsPerPage = (int) $request->query->get('limit');
+        $itemsPerPage = (int) $request->get('limit');
         $this->itemsPerPage = ($itemsPerPage > 0) ? $itemsPerPage : self::ITEMS_PER_PAGE;
         
         // Número total de elementos
