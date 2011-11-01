@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<h1>Libros</h1>
+
+<!-- Listado de libros paginados -->
+<ul>
+    {% for book in elements %}
+        <li>{{ book }}</li>
+    {% else %}
+        <li>No existen libros.</li>
+    {% endfor %}
+</ul>
+
+<!-- Paginador -->
+<ul class="paginator">
+    {% for i in range(1, total/elements|length) %}
+        <a href="{{ path('javiacei_book_list', {'page': i, 'limit': limit}) }}">Página {{ i }}</a>
+    {% endfor %}
+</ul>
+{% endblock %}
