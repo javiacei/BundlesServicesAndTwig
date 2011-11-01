@@ -1,0 +1,36 @@
+<ul class="{{ container_class }}">
+    <!-- FIRST -->
+    {% if currentPage > 1 %}
+        <li class="{{ firstEnabledClass }}">
+            <a href="{{ path(route, {'page': firstPage, 'limit': limit}) }}">{{ firstPageText }}</a>
+        </li>
+    {% else %}
+        <li class="{{ firstDisabledClass }}">
+            {{ firstPageText }}
+        </li>
+    {% endif %}
+
+    <!-- NUMBERS -->
+    {% for page in firstPage..lastPage %}
+        {% if page == currentPage %}
+            <li class="{{ currentClass }}">
+                {{ page }}
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ path(route, {'page': page, 'limit': limit}) }}">{{ page }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+
+    <!-- LAST -->
+    {% if currentPage < lastPage %}
+        <li class="{{ lastEnabledClass }}">
+            <a href="{{ path(route, {'page': lastPage, 'limit': limit}) }}">{{ lastPageText }}</a>
+        </li>
+    {% else %}
+        <li class="{{ lastDisabledClass }}">
+            {{ lastPageText }}
+        </li>
+    {% endif %}
+</ul>

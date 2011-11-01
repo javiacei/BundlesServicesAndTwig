@@ -12,10 +12,9 @@
     {% endfor %}
 </ul>
 
+
+
 <!-- Paginador -->
-<ul class="paginator">
-    {% for i in range(paginator.firstPage, paginator.lastPage) %}
-        <li><a href="{{ path('javiacei_book_list', {'page': i, 'limit': paginator.itemsPerPage}) }}">Página {{ i }}</a></li>
-    {% endfor %}
-</ul>
+{{ simple_paginator_render('javiacei_book_list') }}
+
 {% endblock %}
