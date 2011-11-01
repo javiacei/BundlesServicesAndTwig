@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use JaviAcei\BookBundle\Paginator;
+
 class BookController extends Controller
 {
     /**
@@ -15,28 +17,16 @@ class BookController extends Controller
     public function indexAction()
     {
         $request    = $this->getRequest();
-        
-        // Página a mostrar
-        $page       = $request->query->get('page');
-        $page       = ($page) ? $page : 1;
-        
-        // Límite de elementos
-        $limit      = $request->query->get('limit'); 
-        $limit      = ($limit) ? $limit : 3;
+        $paginator  = new Paginator($request);
         
         $collection = array (
             'Libro 1', 'Libro 2', 'Libro 3', 'Libro 4', 'Libro 5', 'Libro 6'
         );
         
-        $total = count($collection);
-        
-        $offset = $limit * ($page-1);
-        $elementsToShow = \array_slice($collection, $offset, $limit);
+        $elementsToShow = $paginator->paginate($collection);
         
         return array(
-            'page'      => $page,
-            'limit'     => $limit,
-            'total'     => $total,
+            'paginator'  => $paginator,
             'elements'  => $elementsToShow
         );
     }
