@@ -30,3 +30,5 @@ Este comando instalará todas las dependencias (symfony2, twig, etc...)
 
 3) Juguetea todo lo que quieras
 -----------------------------------
+
+    http://localhost/app_dev.php/books/list
